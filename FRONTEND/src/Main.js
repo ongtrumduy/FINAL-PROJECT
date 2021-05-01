@@ -75,11 +75,20 @@ export default class Home extends React.Component {
       // console.log(data.success);
       const status =
         data.peerCount > 1
-          ? `Total Connected Peers: ${data.peerCount}`
+          ? `Total Connected Peers to room ${window.location.pathname}: ${data.peerCount}`
           : "Waiting for other peers to connect";
 
       this.setState({
         status: status
+      });
+    });
+
+    this.socket.on("joined-peers", data => {
+      this.setState({
+        status:
+          data.peerCount > 1
+            ? `Total Connected Peers to room ${window.location.pathname}: ${data.peerCount}`
+            : "Waiting for other peers to connect"
       });
     });
 
@@ -100,7 +109,11 @@ export default class Home extends React.Component {
           // remoteStream:
           //   (remoteStreams.length > 0 && remoteStreams[0].stream) || null,
           remoteStreams,
-          ...selectedVideo
+          ...selectedVideo,
+          status:
+            data.peerCount > 1
+              ? `Total Connected Peers to room ${window.location.pathname}: ${data.peerCount}`
+              : "Waiting for other peers to connect"
         };
       });
     });

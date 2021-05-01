@@ -13,7 +13,11 @@ export default class Videos extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.remoteStreams !== nextProps.remoteStreams) {
       let _rVideos = nextProps.remoteStreams.map((rVideo, index) => {
-        let video = (
+        const _videoTrack = rVideo.stream
+          .getTracks()
+          .filter(track => track.kind === "video");
+
+        let video = (_videoTrack && (
           <Video
             videoStream={rVideo.stream}
             frameStyle={{ width: 120, float: "left", padding: "0 3px" }}
@@ -23,8 +27,9 @@ export default class Videos extends React.Component {
               borderRadius: 3,
               width: "100%"
             }}
+            autoplay
           ></Video>
-        );
+        )) || <div></div>;
 
         return (
           <div

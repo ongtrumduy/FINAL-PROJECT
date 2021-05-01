@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "nodemon": "nodemon server.js --exec babel-node --presets env",
     "start": "babel-node server.js",
+    "start1": "babel-node server1.js",
     "startnode": "node src/server.js",
     "build": "babel A -d B",
     "callback": "babel-node callback.js",
@@ -27,7 +28,7 @@
     "multer": "^1.4.2",
     "nodemon": "^2.0.7",
     "path": "^0.12.7",
-    "socket.io": "^3.1.1",
+    "socket.io": "^4.0.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

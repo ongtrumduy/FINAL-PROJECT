@@ -89,10 +89,24 @@ class Main extends Component {
     };
 
     // https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-    navigator.mediaDevices
-      .getUserMedia(constraints)
-      .then(success)
-      .catch(failure);
+    // navigator.mediaDevices
+    //   .getUserMedia(constraints)
+    //   .then(success)
+    //   .catch(failure);
+
+    // navigator.mediaDevices
+    //   .getDisplayMedia(constraints)
+    //   .then(success)
+    //   .catch(failure);
+
+    (async () => {
+      // const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      const stream = await navigator.mediaDevices.getDisplayMedia(constraints);
+      // const screenTrack = stream.getTracks()[0];
+      // success(screenTrack);
+      console.log("stream đó là: ", stream);
+      success(stream);
+    })().catch(failure);
   };
 
   whoisOnline = () => {

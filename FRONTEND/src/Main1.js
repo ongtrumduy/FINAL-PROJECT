@@ -200,7 +200,7 @@ class Main extends Component {
   componentDidMount = () => {
     const linklocalbackend = "localhost:8081";
 
-    this.socket = ioclient.connect(linklocalbackend, {
+    this.socket = ioclient.connect("https://26529de2b48a.ngrok.io", {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd"
